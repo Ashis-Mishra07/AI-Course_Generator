@@ -10,6 +10,11 @@ import SelectOption from './_components/SelectOption';
 import { UserInputContext } from '../_context/UserInputContext';
 import { GenerateCourseLayout_AI } from '@/configs/AiModel' ;
 import LoadingDialog from './_components/LoadingDialog';
+import { db } from '@/configs/db';
+import { CourseList } from '@/configs/schema';
+import { v4 as uuidv4 } from 'uuid';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 function CreateCourse() {
     const StepperOptions =[
@@ -33,6 +38,8 @@ function CreateCourse() {
     const { userCourseInput, setUserCourseInput } = useContext(UserInputContext);
     const [loading , setLoading]=useState(false);
     const [activeIndex , setActiveIndex]=useState(0);
+    const {user}=useUser();
+    const router=useRouter();
 
     useEffect(()=>{
         console.log(userCourseInput);
@@ -71,8 +78,30 @@ function CreateCourse() {
         console.log(result.response?.text());
         console.log(JSON.parse(result.response?.text()));
         setLoading(false);
-        
+        SaveCourseLayoutInDb(JSON.parse(result.response?.text()));
     }
+
+    const SaveCourseLayoutInDb=async(courseLayout)=>{
+        var id = uuidv4();
+        setLoading(true);
+        const result=await db.insert(CourseList).values({
+            courseId:id,
+            name:userCourseInput?.topic,
+            level:userCourseInput?.level,
+            category:userCourseInput?.category,
+            courseOutput:courseLayout,
+            createdBy:user?.primaryEmailAddress?.emailAddress,
+            userName:user?.fullName,
+            userProfileImage:user?.imageUrl
+        });
+
+        console.log("finish");
+        setLoading(false);
+        router.replace('/create-course/' + id);
+
+    }
+
+
   return (
     <div>
         <div className='flex flex-col justify-center items-center mt-10 '>
