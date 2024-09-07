@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { RiStackFill } from "react-icons/ri";
 import { HiLightBulb } from "react-icons/hi";
 import { HiClipboardDocumentCheck } from "react-icons/hi2";
@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import SelectCategory from './_components/SelectCategory';
 import TopicDescription from './_components/TopicDescription';
 import SelectOption from './_components/SelectOption';
+import { UserInputContext } from '../_context/UserInputContext';
 
 function CreateCourse() {
     const StepperOptions =[
@@ -27,7 +28,34 @@ function CreateCourse() {
         }
     ]
 
+    const { userCourseInput, setUserCourseInput } = useContext(UserInputContext);
     const [activeIndex , setActiveIndex]=useState(0);
+
+    useEffect(()=>{
+        console.log(userCourseInput);
+        
+    },[userCourseInput]);
+
+    const checkStatus=()=>{
+        if(userCourseInput?.length==0){
+            return true;
+        }
+        if(activeIndex==0&&(userCourseInput?.category?.length==0 || userCourseInput?.category==undefined)){
+            return true;
+        }
+        if(activeIndex==1&& (userCourseInput?.topic?.length==0 || userCourseInput?.topic==undefined)){
+            return true;
+        }
+        else if (activeIndex == 2 && (userCourseInput?.level == undefined ||
+                                     userCourseInput?.duration == undefined ||
+                                     userCourseInput?.displayVideo == undefined ||
+                                     userCourseInput?.noOfChapters==undefined)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
   return (
     <div>
         <div className='flex flex-col justify-center items-center mt-10 '>
@@ -57,8 +85,8 @@ function CreateCourse() {
             <div className='flex justify-between mt-10 '>
                 <Button disabled={activeIndex == 0}
                 variant='outline' onClick={() => setActiveIndex(activeIndex - 1)}>Previous</Button>
-                {activeIndex<2&&<Button onClick={() => setActiveIndex(activeIndex + 1)}>Next</Button>}
-                {activeIndex==2&&<Button onClick={() => setActiveIndex(activeIndex + 1)}>Generate Course Layout</Button>}
+                {activeIndex<2&&<Button disabled={checkStatus()} onClick={() => setActiveIndex(activeIndex + 1)}>Next</Button>}
+                {activeIndex==2&&<Button disabled={checkStatus()} onClick={() => setActiveIndex(activeIndex + 1)}>Generate Course Layout</Button>}
             </div>
         </div>
 

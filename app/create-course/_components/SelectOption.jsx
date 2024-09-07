@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Select,
     SelectContent,
@@ -11,18 +11,26 @@ import { FaVideo } from "react-icons/fa";
 import { GiLevelEndFlag } from "react-icons/gi";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { TbListNumbers } from "react-icons/tb";
-
-
+import { UserInputContext } from '@/app/_context/UserInputContext';
 
 
 function SelectOption() {
+
+    const { userCourseInput, setUserCourseInput } = useContext(UserInputContext);
+    const handleInputChange = (fieldName, value) => {
+        setUserCourseInput(prev => ({
+            ...prev,
+            [fieldName]: value
+        }))
+    }
+
   return (
     <div className='px-10 md:px-20 lg:px-44'>
         <div className='grid grid-cols-2 gap-10'>
             <div>
                   <label className='text-sm flex items-center gap-1'><GiLevelEndFlag />Difficulty Level</label>
-                  <Select>
-                      <SelectTrigger className="">
+                  <Select onValueChange={(value) => handleInputChange('level', value)} defaultValue={userCourseInput?.level}>
+                      <SelectTrigger className="h-14 text-lg">
                           <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -35,8 +43,8 @@ function SelectOption() {
             </div>
               <div>
                   <label className='text-sm flex items-center gap-1'><MdAccessTimeFilled />Course Duration</label>
-                  <Select>
-                      <SelectTrigger className="">
+                  <Select onValueChange={(value) => handleInputChange('duration', value)} defaultValue={userCourseInput?.duration}>
+                      <SelectTrigger className="h-14 text-lg">
                           <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -49,8 +57,8 @@ function SelectOption() {
               </div>
               <div>
                   <label className='text-sm flex items-center gap-1'><FaVideo />Add Video</label>
-                  <Select>
-                      <SelectTrigger className="">
+                  <Select onValueChange={(value) => handleInputChange('displayVideo', value)} defaultValue={userCourseInput?.displayVideo}>
+                      <SelectTrigger className="h-14 text-lg">
                           <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -62,7 +70,9 @@ function SelectOption() {
               </div>
               <div>
                   <label className='text-sm flex items-center gap-1'><TbListNumbers />No of Chapters</label>
-                  <Input type="number"/>
+                  <Input type="number" className="h-14 text-lg"
+                      onChange={(event) => handleInputChange('noOfChapters', event.target.value)}
+                      defaultValue={userCourseInput?.noOfChapters}/>
               </div>
         </div>
     </div>
