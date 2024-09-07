@@ -2,13 +2,15 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image'
 import React from 'react'
 import { IoExtensionPuzzle } from "react-icons/io5";
+import EditCourseBasicInfo from './EditCourseBasicInfo';
 
-function CourseBasicInfo({course}) {
+function CourseBasicInfo({course,refreshData}) {
   return (
     <div className='p-10 border rounded-xl shadow-sm mt-10'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
             <div>
-                <h2 className='font-bold  text-3xl '>{course?.courseOutput?.course?.name}</h2>
+                <h2 className='font-bold  text-3xl '>{course?.courseOutput?.course?.name} 
+                  <EditCourseBasicInfo course={course} refreshData={()=>refreshData(true)}/></h2>
                 <p className='text-sm  text-gray-400  mt-3 '>{course?.courseOutput?.course?.description}</p>
 
                   <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><IoExtensionPuzzle />{course?.category}</h2>
