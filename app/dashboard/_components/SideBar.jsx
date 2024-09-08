@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Progress } from "@/components/ui/progress"
 import { UserCourseListContext } from '@/app/_context/UserCourseListContext';
+import { MdReviews } from "react-icons/md";
 
 
 
@@ -36,8 +37,8 @@ function SideBar() {
         },
         {
             id: 4,
-            name: 'Logout',
-            icon: <FaPowerOff />,
+            name: 'Reviews',
+            icon: <MdReviews />,
             path: '/dashboard/logout'
         }
     ]

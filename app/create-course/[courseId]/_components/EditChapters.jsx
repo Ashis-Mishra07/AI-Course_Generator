@@ -45,7 +45,7 @@ function EditChapters({ course, index, refreshData }) {
 
   return (
       <Dialog>
-          <DialogTrigger><HiPencilSquare /></DialogTrigger>
+          <DialogTrigger><HiPencilSquare className='ml-2' /></DialogTrigger>
           <DialogContent>
               <DialogHeader>
                   <DialogTitle>Edit Chapter</DialogTitle>

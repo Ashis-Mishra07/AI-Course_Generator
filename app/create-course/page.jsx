@@ -42,7 +42,7 @@ function CreateCourse() {
     const router=useRouter();
 
     useEffect(()=>{
-        console.log(userCourseInput);
+        // console.log(userCourseInput);
         
     },[userCourseInput]);
 
@@ -105,7 +105,7 @@ function CreateCourse() {
   return (
     <div>
         <div className='flex flex-col justify-center items-center mt-10 '>
-            <h2 className='text-4xl text-primary font-medium'>Create Course</h2>
+            <h2 className='text-5xl text-primary font-semibold '>Create Course</h2>
             <div className='flex mt-10'>
                 {StepperOptions.map((item,index)=>(
                     <div className='flex items-center '>
@@ -131,8 +131,8 @@ function CreateCourse() {
             <div className='flex justify-between mt-10 '>
                 <Button disabled={activeIndex == 0}
                 variant='outline' onClick={() => setActiveIndex(activeIndex - 1)}>Previous</Button>
-                {activeIndex<2&&<Button disabled={checkStatus()} onClick={() => setActiveIndex(activeIndex + 1)}>Next</Button>}
-                  {activeIndex == 2 && <Button disabled={checkStatus()} onClick={() => GenerateCourseLayout() }>Generate Course Layout</Button>}
+                  {activeIndex < 2 && <Button className="text-lg py-3 px-6" disabled={checkStatus()} onClick={() => setActiveIndex(activeIndex + 1)}>Next</Button>}
+                  {activeIndex == 2 && <Button className="text-lg py-3 px-6" disabled={checkStatus()} onClick={() => GenerateCourseLayout() }>Generate Course Layout</Button>}
             </div>
         </div>
 

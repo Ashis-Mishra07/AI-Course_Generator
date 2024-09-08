@@ -8,6 +8,7 @@ import { storage } from '@/configs/firebaseConfig';
 import { CourseList } from '@/configs/schema';
 import { eq } from 'drizzle-orm';
 import { db } from '@/configs/db';
+import Link from 'next/link';
 
 function CourseBasicInfo({course,refreshData,edit=true}) {
 
@@ -54,12 +55,15 @@ function CourseBasicInfo({course,refreshData,edit=true}) {
     <div className='p-10 border rounded-xl shadow-sm mt-10'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
             <div>
-                <h2 className='font-bold  text-3xl '>{course?.courseOutput?.course?.name} 
+                <h2 className='font-bold  text-2xl'>{course?.courseOutput?.course?.name} 
                   {edit&&<EditCourseBasicInfo course={course} refreshData={()=>refreshData(true)}/>}</h2>
                 <p className='text-sm  text-gray-400  mt-3 '>{course?.courseOutput?.course?.description}</p>
 
                   <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><IoExtensionPuzzle />{course?.category}</h2>
-                  <Button className="w-full mt-5"> Start</Button>
+                  {!edit && <Link href={'/course/'+course?.courseId+'/start'}>
+                      <Button className="w-full mt-5"> Start</Button>
+                  </Link> }
+                  
             </div>
             <div>
                 <label htmlFor="upload-image">

@@ -42,13 +42,13 @@ function EditCourseBasicInfo({course,refreshData}) {
 
         refreshData(true);
         
-        console.log(result);
+        // console.log(result);
         
     }
 
   return (
       <Dialog>
-          <DialogTrigger><HiPencilSquare /></DialogTrigger>
+          <DialogTrigger><HiPencilSquare className='ml-2' /></DialogTrigger>
           <DialogContent>
               <DialogHeader>
                   <DialogTitle>Edit Course Title & Description</DialogTitle>

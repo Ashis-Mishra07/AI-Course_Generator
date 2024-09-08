@@ -28,7 +28,7 @@ function SelectOption() {
     <div className='px-10 md:px-20 lg:px-44'>
         <div className='grid grid-cols-2 gap-10'>
             <div>
-                  <label className='text-sm flex items-center gap-1'><GiLevelEndFlag />Difficulty Level</label>
+                  <label className='text-md flex items-center gap-2  mb-1 '><GiLevelEndFlag className='text-xl' />Difficulty Level</label>
                   <Select onValueChange={(value) => handleInputChange('level', value)} defaultValue={userCourseInput?.level}>
                       <SelectTrigger className="h-14 text-lg">
                           <SelectValue placeholder="Select" />
@@ -42,7 +42,7 @@ function SelectOption() {
 
             </div>
               <div>
-                  <label className='text-sm flex items-center gap-1'><MdAccessTimeFilled />Course Duration</label>
+                  <label className='text-md flex items-center gap-2  mb-1 '><MdAccessTimeFilled className='text-xl' />Course Duration</label>
                   <Select onValueChange={(value) => handleInputChange('duration', value)} defaultValue={userCourseInput?.duration}>
                       <SelectTrigger className="h-14 text-lg">
                           <SelectValue placeholder="Select" />
@@ -55,8 +55,8 @@ function SelectOption() {
                   </Select>
 
               </div>
-              <div>
-                  <label className='text-sm flex items-center gap-1'><FaVideo />Add Video</label>
+              <div >
+                  <label className='text-md flex items-center gap-2 mb-1 '><FaVideo className='text-xl' />Add Video</label>
                   <Select onValueChange={(value) => handleInputChange('displayVideo', value)} defaultValue={userCourseInput?.displayVideo}>
                       <SelectTrigger className="h-14 text-lg">
                           <SelectValue placeholder="Select" />
@@ -69,7 +69,7 @@ function SelectOption() {
 
               </div>
               <div>
-                  <label className='text-sm flex items-center gap-1'><TbListNumbers />No of Chapters</label>
+                  <label className='text-md flex items-center gap-2  mb-1 '><TbListNumbers className='text-xl' />No of Chapters</label>
                   <Input type="number" className="h-14 text-lg"
                       onChange={(event) => handleInputChange('noOfChapters', event.target.value)}
                       defaultValue={userCourseInput?.noOfChapters}/>

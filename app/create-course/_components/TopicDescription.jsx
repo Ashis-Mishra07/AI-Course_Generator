@@ -18,18 +18,18 @@ function TopicDescription() {
   return (
     <div className='mx-20 lg:max-44 '>
         <div className='mt-5'>
-              <label className='flex items-center gap-1' ><FaLightbulb />Write the topic for which you want to generate a course(e.g., Python Course , Yoga , etc.): </label>
+              <label className='flex items-center gap-1 text-lg' ><FaLightbulb />Write the topic for which you want to generate a course(e.g., Python Course , Yoga , etc.): </label>
             <Input placeholder={'Topic'} 
-                className="h-14 text-xl"
+                className="h-14 text-xl mt-2 "
                 defaultValue={userCourseInput?.topic}
                 onChange={(e)=>handleInputChange('topic',e.target.value)}/>
         </div>
         <div className='mt-5 '>
-              <label className='flex items-center gap-1'><MdOutlineMoreTime />Tell us more about your course , what you want to include in the course (Optional)</label>
+        <label className='flex items-center gap-1 text-lg'><MdOutlineMoreTime />Tell us more about your course , what you want to include in the course (Optional)</label>
         <Textarea placeholder="About your Course" 
           defaultValue={userCourseInput?.description}
             onChange={(e) => handleInputChange('description', e.target.value)} 
-            className="h-24 text-xl" />
+            className="h-24 text-xl mt-2" />
         </div>
         
     </div>
