@@ -24,7 +24,6 @@ function CourseLayout({params}) {
     setCourse(result[0]);
     console.log(result);
     
-
   }
   return (
     <div className='mt-10 px-7 md:px-20 lg:px-44'>

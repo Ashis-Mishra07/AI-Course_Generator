@@ -1,10 +1,48 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { IoExtensionPuzzle } from "react-icons/io5";
 import EditCourseBasicInfo from './EditCourseBasicInfo';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { storage } from '@/configs/firebaseConfig';
+import { CourseList } from '@/configs/schema';
+import { eq } from 'drizzle-orm';
+import { db } from '@/configs/db';
 
 function CourseBasicInfo({course,refreshData}) {
+
+  const [selectedFile , setSelectedFile]=useState();
+
+  /**
+   * 
+   * @param {*} event 
+   */
+
+  const onFileSelected = async(event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedFile(URL.createObjectURL(file));
+
+      const fileName=Date.now()+'.jpg'
+      const storageRef=ref(storage,'ai-course/'+fileName);
+      await uploadBytes(storageRef,file).then((snapshot)=>{
+        console.log('Upload File Completed');
+        
+      }).then(resp=>{
+        getDownloadURL(storageRef).then(async(downloadUrl)=>{
+          console.log(downloadUrl);
+          await db.update(CourseList).set({
+            courseBanner:downloadUrl
+          }).where(eq(CourseList.id , course?.id))
+
+
+        })
+      })
+    }
+  };
+
+
+
   return (
     <div className='p-10 border rounded-xl shadow-sm mt-10'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
@@ -17,7 +55,10 @@ function CourseBasicInfo({course,refreshData}) {
                   <Button className="w-full mt-5"> Start</Button>
             </div>
             <div>
-                <Image src={'/book.jpg'} height={300} width={300}  className='w-full rounded-xl h-[250px] object-cover'/>
+                <label htmlFor="upload-image">
+                  <Image src={selectedFile?selectedFile:'/book.jpg'} height={300} width={300} className='w-full rounded-xl h-[250px] object-cover cursor-pointer' />
+                </label>
+          <input type="file" id='upload-image' className='opacity-0' onChange={onFileSelected} accept="image/*" />
             </div>
         </div>
         
