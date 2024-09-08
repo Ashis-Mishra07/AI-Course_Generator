@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoExtensionPuzzle } from "react-icons/io5";
 import EditCourseBasicInfo from './EditCourseBasicInfo';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -12,6 +12,13 @@ import { db } from '@/configs/db';
 function CourseBasicInfo({course,refreshData}) {
 
   const [selectedFile , setSelectedFile]=useState();
+
+  useEffect(()=>{
+    if(course){
+      setSelectedFile(course?.courseBanner)
+    }
+  },[course])
+
 
   /**
    * 

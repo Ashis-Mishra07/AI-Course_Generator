@@ -10,12 +10,16 @@ import ChapterList from './_components/ChapterList';
 import { Button } from '@/components/ui/button';
 import { GenerateChapterContent_AI } from '@/configs/AiModel';
 import LoadingDialog from '../_components/LoadingDialog';
+import service from '@/configs/service';
+import { useRouter } from 'next/navigation';
+import { Chapters } from '@/configs/schema';
 
 function CourseLayout({params}) {
 
   const {user}=useUser();
   const [course , setCourse] =useState([]);
   const [loading,setLoading]=useState(false);
+  const router=useRouter();
 
   useEffect(()=>{
     params&&GetCourse();
@@ -37,18 +41,43 @@ function CourseLayout({params}) {
       const PROMPT='Explain the concept in Detail on Topic:'+course?.name+',Chapter:'+chapter?.name+', in JSON Format with list of array with field as title , description in detail , Code Example (Code field in <precode> format) if applicable ';
       console.log(PROMPT);
 
-      if(index<3){
+      // if(index<3){
         try {
+
+          let videoId='';
           const result=await GenerateChapterContent_AI.sendMessage(PROMPT);
           console.log(result?.response?.text());
+          const content = JSON.parse(result?.response?.text());
+          console.log('Parsed Content:', content);
 
+          // service.getVideos(course?.name+':'+chapter?.name).then(resp=>{
+          //   console.log(resp);
+          //   videoId=resp[0]?.id?.videoId
+          // })
+
+          const videoResponse = await service.getVideos(course?.name + ':' + chapter?.name);
+          console.log('Video Response:', videoResponse);
+
+          videoId = videoResponse[0]?.id?.videoId;
+
+          await db.insert(Chapters).values({
+            chapterId:index,
+            courseId:course?.courseId,
+            content:content,
+            videoId:videoId
+          })
           setLoading(false);
-        } catch (error) {
+        } 
+        catch (error) {
           setLoading(false);
           console.log(error);
           
         }
-      }
+        await db.update(CourseList).set({
+          publish:true
+        })
+        router.replace('/create-course/'+course?.courseId+'/finish');
+      // }
       
     })
   }
