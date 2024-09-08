@@ -14,6 +14,7 @@ import service from '@/configs/service';
 import { useRouter } from 'next/navigation';
 import { Chapters } from '@/configs/schema';
 
+
 function CourseLayout({params}) {
 
   const {user}=useUser();
