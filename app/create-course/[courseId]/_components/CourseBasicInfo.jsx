@@ -9,7 +9,7 @@ import { CourseList } from '@/configs/schema';
 import { eq } from 'drizzle-orm';
 import { db } from '@/configs/db';
 
-function CourseBasicInfo({course,refreshData}) {
+function CourseBasicInfo({course,refreshData,edit=true}) {
 
   const [selectedFile , setSelectedFile]=useState();
 
@@ -55,7 +55,7 @@ function CourseBasicInfo({course,refreshData}) {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
             <div>
                 <h2 className='font-bold  text-3xl '>{course?.courseOutput?.course?.name} 
-                  <EditCourseBasicInfo course={course} refreshData={()=>refreshData(true)}/></h2>
+                  {edit&&<EditCourseBasicInfo course={course} refreshData={()=>refreshData(true)}/>}</h2>
                 <p className='text-sm  text-gray-400  mt-3 '>{course?.courseOutput?.course?.description}</p>
 
                   <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><IoExtensionPuzzle />{course?.category}</h2>
@@ -65,7 +65,7 @@ function CourseBasicInfo({course,refreshData}) {
                 <label htmlFor="upload-image">
                   <Image src={selectedFile?selectedFile:'/book.jpg'} height={300} width={300} className='w-full rounded-xl h-[250px] object-cover cursor-pointer' />
                 </label>
-          <input type="file" id='upload-image' className='opacity-0' onChange={onFileSelected} accept="image/*" />
+          {edit&&<input type="file" id='upload-image' className='opacity-0' onChange={onFileSelected} accept="image/*" />}
             </div>
         </div>
         

@@ -3,11 +3,22 @@ import { UserCourseListContext } from '@/app/_context/UserCourseListContext';
 import { Button } from '@/components/ui/button';
 import { useUser } from '@clerk/nextjs'
 import Link from 'next/link';
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 function AddCourse() {
     const {user}=useUser();
-  const { userCourseList, setUserCourseList }=useContext(UserCourseListContext)
+  const { userCourseList, setUserCourseList }=useContext(UserCourseListContext);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // Render nothing until the component is mounted
+  }
+
   return (
     <div className='flex items-center justify-between '>
         <div>

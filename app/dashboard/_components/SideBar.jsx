@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaHome } from "react-icons/fa";
 import { GiStack } from "react-icons/gi";
 import { FaShieldAlt } from "react-icons/fa";
@@ -43,6 +43,17 @@ function SideBar() {
     ]
 
     const path=usePathname();
+
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return null;
+    }
+
   return (
     <div className='fixed h-full md:w-64  p-5 shadow-md'>
           <Image src={'/logo.svg'} width={160} height={100} priority />

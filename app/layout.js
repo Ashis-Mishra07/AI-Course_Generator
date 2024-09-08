@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <GoogleOneTap/>
-        <body
-          className={outfit.className}>
+        <body className={outfit.className}>
           {children}
+          {/* Place GoogleOneTap within body */}
+          <GoogleOneTap />
         </body>
       </html>
     </ClerkProvider>

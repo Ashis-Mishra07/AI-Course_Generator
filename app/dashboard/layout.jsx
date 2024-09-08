@@ -1,12 +1,22 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from './_components/SideBar'
 import Header from './_components/Header'
 import { UserCourseListContext } from '../_context/UserCourseListContext'
 
 function DashboardLayout({children}) {
   const [userCourseList , setUserCourseList]=useState([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Check if the component is mounted on the client
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // Avoid rendering content until the client has mounted
+  }
   return (
     <UserCourseListContext.Provider value={{ userCourseList, setUserCourseList }}>
     <div>
