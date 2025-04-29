@@ -10,7 +10,8 @@ import Link from 'next/link';
 import { Progress } from "@/components/ui/progress"
 import { UserCourseListContext } from '@/app/_context/UserCourseListContext';
 import { MdReviews } from "react-icons/md";
-
+import { SiLinuxprofessionalinstitute } from "react-icons/si";
+import { BsFileEarmarkPdfFill } from "react-icons/bs";
 
 
 function SideBar() {
@@ -37,10 +38,24 @@ function SideBar() {
         },
         {
             id: 4,
+            name: 'Demo_Interview',
+            icon: <SiLinuxprofessionalinstitute />
+,
+            path: '/dashboard/interview'
+        },
+        {
+            id: 5,
+            name: 'PDF_Assistant',
+            icon: <BsFileEarmarkPdfFill />,
+            path: '/dashboard/pdf'
+        },
+        {
+            id: 6,
             name: 'Reviews',
             icon: <MdReviews />,
             path: '/dashboard/logout'
-        }
+        },
+        
     ]
 
     const path=usePathname();
