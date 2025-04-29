@@ -69,7 +69,7 @@ function Hero() {
                       className="text-5xl md:text-8xl bg-clip-text text-transparent
             bg-gradient-to-b from-primary to-neutral-600 font-sans font-bold
             mb-5">
-                      Your Personal AI Course Generator
+                      AI Empowered Learning Suite
                   </h1>
                   <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
                       Double your chances of landing that job offer with our AI-powered Interview preparation .
@@ -186,63 +186,45 @@ function Hero() {
               </div>
           </section>
           <section className="py-8 bg-white z-50 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-              <h2 className="font-bold text-3xl">How it Works?</h2>
+              <h2 className="font-bold text-3xl">How It Works</h2>
               <h2 className="text-md text-gray-500">
-                  Give mock interview in just 3 simplar easy step
+                  Generate customized learning resources and mock interviews in just 3 simple steps
               </h2>
 
               <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  <a
-                      className="block rounded-xl border bg-white
-         border-gray-200 p-8 shadow-xl transition
-         hover:border-pink-500/10 hover:shadow-blue-500/40 cursor-pointer">
+                  <a className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-blue-500/40 cursor-pointer">
                       <AtomIcon className="h-8 w-8" />
-
                       <h2 className="mt-4 text-xl font-bold text-black">
-                          Write promot for your form
+                          Create Your Custom Course
                       </h2>
-
                       <p className="mt-1 text-sm text-gray-600">
-                          In this section, you can create specific questions or scenarios
-                          tailored to the job role and the skills you are looking for.
-                          Remember to keep your questions clear and concise, using
-                          open-ended prompts to encourage detailed responses.
+                          Build a personalized course curriculum by selecting the topics and skills you want to cover. The system will generate a tailored course plan designed to help users achieve their learning goals, all powered by AI.
                       </p>
                   </a>
 
                   <a className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-blue-500/40 cursor-pointer">
                       <Edit className="h-8 w-8" />
-
                       <h2 className="mt-4 text-xl font-bold text-black">
-                          Edit Your form{" "}
+                          Design Your Mock Interview
                       </h2>
-
                       <p className="mt-1 text-sm text-gray-600">
-                          Fine-tuning your interview form is essential to ensure it aligns
-                          with your hiring goals. This section allows you to modify, delete,
-                          or rearrange your questions easily. You can preview your form to
-                          see how it will appear to candidates, making sure everything is in
-                          order before going live.
+                          Craft a mock interview experience tailored to the specific job role. Customize questions, scenarios, and prompts, allowing candidates to practice and prepare in a simulated real-world environment.
                       </p>
                   </a>
 
                   <a className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-blue-500/40 cursor-pointer">
                       <Share2 className="h-8 w-8" />
-
                       <h2 className="mt-4 text-xl font-bold text-black">
-                          Share & Start Accepting Responses
+                          Generate AI-Powered PDFs & Share Interviews
                       </h2>
-
                       <p className="mt-1 text-sm text-gray-600">
-                          This section offers multiple ways to distribute your form,
-                          including generating a shareable link, sending email invitations,
-                          or embedding the form on your website. Monitor the progress in
-                          real-time through our dashboard, where you can manage and review
-                          all candidate responses.
+                          Once you've designed your course or interview, instantly generate AI-powered PDFs for learners or candidates. Share these documents easily via links, email, or directly on your website to track progress and responses in real time.
                       </p>
                   </a>
               </div>
           </section>
+
+
       </main>
   )
 }
