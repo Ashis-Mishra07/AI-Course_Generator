@@ -13,6 +13,7 @@ import { MdReviews } from "react-icons/md";
 import { SiLinuxprofessionalinstitute } from "react-icons/si";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
 import { FaMoneyBillWave } from 'react-icons/fa6';
+import { User } from 'lucide-react';
 
 
 function SideBar() {
@@ -55,6 +56,12 @@ function SideBar() {
             name: 'Reviews',
             icon: <MdReviews />,
             path: '/dashboard/logout'
+        },
+        {
+            id: 7,
+            name: 'Profile',
+            icon: <User />,
+            path: '/dashboard/profile'
         },
         
     ]
