@@ -12,6 +12,7 @@ import { UserCourseListContext } from '@/app/_context/UserCourseListContext';
 import { MdReviews } from "react-icons/md";
 import { SiLinuxprofessionalinstitute } from "react-icons/si";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
+import { FaMoneyBillWave } from 'react-icons/fa6';
 
 
 function SideBar() {
@@ -32,9 +33,9 @@ function SideBar() {
         },
         {
             id: 3,
-            name: 'Upgrade',
-            icon: <FaShieldAlt />,
-            path: '/dashboard/upgrade'
+            name: 'Billing',
+            icon: <FaMoneyBillWave />,
+            path: '/dashboard/billing'
         },
         {
             id: 4,
