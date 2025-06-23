@@ -23,8 +23,10 @@ function UserCourseList() {
     const result = await db.select(CourseList).from(CourseList)
       .where(eq(CourseList?.createdBy , user?.primaryEmailAddress?.emailAddress))
 
-      setCourseList(result);
-      setUserCourseList(result); 
+    const reversedResult = [...result].reverse();
+
+    setCourseList(reversedResult);
+    setUserCourseList(reversedResult);
   }
 
   

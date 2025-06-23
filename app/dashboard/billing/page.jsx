@@ -17,7 +17,7 @@ const BillingPageContent = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-8">
-            <h2 className="font-bold text-3xl text-center mb-4">Billing & Subscriptions</h2>
+            <h1 className="font-bold text-3xl text-center mb-4 text-primary">Billing & Subscriptions</h1>
             <p className="text-lg text-center text-gray-600 mb-8">
                 Manage your subscription and payment methods
             </p>
@@ -39,7 +39,12 @@ const BillingPageContent = () => {
                 <div className="mt-8 text-center">
                     <p className="text-lg font-medium">Need more options?</p>
                     <p className="text-gray-600 mt-2">Contact our sales team for custom plans</p>
-                    <button className="mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90">
+                    <button
+                        onClick={() => {
+                            window.location.href = "mailto:mishralucky074@gmail.com?subject=Custom%20Plan%20Inquiry&body=Hello,%20I%20would%20like%20to%20inquire%20about%20custom%20pricing%20plans%20for%20your%20service.";
+                        }}
+                        className="mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90"
+                    >
                         Contact Sales
                     </button>
                 </div>

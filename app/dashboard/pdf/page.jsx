@@ -24,7 +24,7 @@ function PdfPage() {
                 </p>
 
                 <Link href="https://ai-pdf-maker.vercel.app/dashboard">
-                    <button className="bg-gradient-to-tr mt-8 from-green-500 to-teal-600 hover:scale-105 transition-all text-white font-semibold py-3 px-8 rounded-xl shadow-lg">
+                    <button className="bg-primary hover:scale-105 transition-all text-white font-semibold py-3 px-8 rounded-xl shadow-lg">
                         📑 Manage PDFs
                     </button>
                 </Link>

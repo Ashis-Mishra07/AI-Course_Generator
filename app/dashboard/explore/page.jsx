@@ -24,7 +24,7 @@ function Explore() {
 
   return (
     <div>
-      <h2 className='font-bold text-3xl '>Explore More Projects</h2>
+      <h2 className='font-bold text-3xl '>Explore More <span className='text-primary'>Projects</span></h2>
       <p>Explore more projects built with AI by other users</p>
 
       <div className='grid grid-cols-2 lg:grid-cols-3 gap-5 '>

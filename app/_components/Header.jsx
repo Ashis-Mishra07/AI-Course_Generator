@@ -14,7 +14,7 @@ function Header() {
   return (
     <div className='flex justify-between p-4 shadow-sm'>
       <Link href={'/dashboard'}>
-        <Image src={'/logo.svg'} width={190} height={100} alt="Logo" />
+        <Image src={'/logo.png'} width={190} height={100} alt="Logo" />
       </Link>
 
       {/* Link styled like the previous <a> tag */}

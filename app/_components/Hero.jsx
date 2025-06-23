@@ -1,10 +1,29 @@
 import Image from "next/image";
 import { AtomIcon, Edit, Share2 } from "lucide-react";
 import React from "react";
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button';
 import Link from "next/link";
 import { ContainerScroll } from "../ContainerScroll";
 import Header from "./Header";
+import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
+// import { Button } from "../../../components/ui/button";
+// const Button = ({ children, size, className, ...props }) => {
+//     const sizeClasses = {
+//         default: "px-4 py-2",
+//         sm: "px-2 py-1 text-sm",
+//         lg: "px-6 py-3 text-lg",
+//     };
+
+//     return (
+//         <button
+//             className={`inline-flex items-center justify-center font-medium transition-colors rounded-md ${sizeClasses[size || "default"]} ${className}`}
+//             {...props}
+//         >
+//             {children}
+//         </button>
+//     );
+//   };
 
 function Hero() {
   return (
