@@ -7,7 +7,6 @@ Built using:
 - **Vapi for real-time voice interviews**
 - **OpenAI / Gemini APIs**
 - **LangChain / LlamaIndex**
-- **Gradio / HuggingFace (optional for extensions)**
 
 ---
 
