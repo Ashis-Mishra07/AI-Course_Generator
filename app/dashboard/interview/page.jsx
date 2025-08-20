@@ -23,7 +23,7 @@ function Page() {
                 </p>
 
                 
-                <Link href="https://interview-2-7b3h.vercel.app/login">
+                <Link href="https://interview-2-7b3h.vercel.app/sign-in">
                 
                 <button className="bg-white hover:scale-105 transition-all text-primary text-xl font-semibold py-3 px-8 rounded-xl shadow-lg">
                     🚀 Start Interview
